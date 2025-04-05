@@ -270,3 +270,11 @@ export const findPlayerById = async (id: number): Promise<PlayerModel | undefine
 export const insertPlayer = async (player: PlayerModel): Promise<PlayerModel | undefined> => {
     database.push(player);
 }
+
+export const deleteOnePlayer = async (id: number): Promise<void> => {
+    const index = database.findIndex(player => player.id === id);
+
+    if (index !== -1) {
+        database.splice(index, 1);
+    }
+}
