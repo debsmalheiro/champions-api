@@ -1,5 +1,6 @@
 import * as HttpResponse from "../utils/http-helper";
 import * as PlayerRepository from "../repositories/players-repository";
+import { PlayerModel } from "../models/player-model";
 
 export const getPlayerService = async () => {
     const data = await PlayerRepository.findAllPlayers();
@@ -26,3 +27,16 @@ export const getPlayerByIdService = async (id: number) => {
 
     return response;
 };
+
+export const createPlayerService = async (player: PlayerModel) => {
+    let response = null;
+
+    if (Object.keys(player).length !== 0) {
+        await PlayerRepository.insertPlayer(player);
+        response = HttpResponse.created();
+    } else {
+        response = HttpResponse.badRequest();
+    }
+
+    return response;
+}
