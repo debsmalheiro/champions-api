@@ -1,4 +1,4 @@
-import { readFile, writeFile } from "fs/promises";
+import { readFile, unlink, writeFile } from "fs/promises";
 
 const createTxt = async () => {
     const dogs = ["Jolie", "Moana", "Maui"];
@@ -25,5 +25,9 @@ const updateTxt = async () => {
     await writeFile(fileName, listTxt);
 }
 
-updateTxt();
+const deleteTxt = async () => {
+    const fileName = "./src/fs-module/teste.txt"
+    await unlink(fileName);
+}
 
+deleteTxt();
