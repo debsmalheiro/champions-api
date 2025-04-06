@@ -3,7 +3,7 @@ import z from 'zod';
 const schema = z.object({
     name: z.string().min(2),
     email: z.string().email(),
-    age: z.number().min(18).max(120),
+    age: z.number().min(18).max(120).optional(),
     status: z.boolean(),
     skills: z.array(
         z.object({
