@@ -1,7 +1,7 @@
 import z from 'zod';
 
 const schema = z.object({
-    name: z.string().min(2),
+    name: z.literal("Debs"),
     email: z.string().email(),
     age: z.number().min(18).max(120).optional(),
     status: z.boolean(),
@@ -16,7 +16,7 @@ const schema = z.object({
 type User = z.infer<typeof schema>;
 
 let data: User = {
-    name: "Deborah",
+    name: "Debs",
     email: "malheirodev@gmail.com",
     age: 27,
     status: true,
